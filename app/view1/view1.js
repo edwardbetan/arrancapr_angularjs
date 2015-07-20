@@ -1,5 +1,7 @@
 'use strict';
 
+//filename: view1.js
+
 angular.module('store.view1', ['ui.router'])
 
 .config(['$stateProvider', function($stateProvider) {
@@ -15,13 +17,32 @@ angular.module('store.view1', ['ui.router'])
 
 .controller('StoreController', ['$scope', function($scope) {
 
-        $scope.gem = {
-            bla : 'Welcome to web development for ArrancaPR!'
-        };
-
-        $scope.webDevWelcome = 'Welcome to Web Development from ArrancaPR!';
-
-        $scope.helloWorld = 'Hello World!';
+        $scope.gemsArr = [ // 3 elements
+            {
+                'name'          : 'Diamond',
+                'description'   : 'This is a beautiful gem!',
+                'price'         : '$1,200.00',
+                'quantity'      : 5,
+                'canPurchase'   : true,
+                'soldOut'       : false
+            },
+            {
+                'name'          : 'Ruby',
+                'description'   : 'This is bright red!',
+                'price'         : '$800.00',
+                'quantity'      : 4,
+                'canPurchase'   : true,
+                'soldOut'       : false
+            },
+            {
+                'name'          : 'Esmeralda',
+                'description'   : 'This is a nice green!',
+                'price'         : '$900.00',
+                'quantity'      : 10,
+                'canPurchase'   : false,
+                'soldOut'       : false
+            }
+        ];
 
 }]);
 
