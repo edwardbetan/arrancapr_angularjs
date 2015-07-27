@@ -1,13 +1,35 @@
 <!--filename: view1.html-->
 
-<!--<h3>{{ webDevWelcome }}</h3>-->
+<ul class="list-group">
+    <li class="list-group-item" ng-repeat="gem in gemsArr | orderBy:'-price'">
+        <h3>
+            {{gem.name}}
+            <em class="pull-right">{{gem.price | currency}}</em>
+            <img ng-src="{{gem.image}}" height="100px"/>
+        </h3>
 
-<div ng-repeat="gem in gemsArr">
-    <div ng-hide="gem.soldOut">
-        <h3>Product Name: {{gem.name}}</h3>
-        <h4>Description: {{gem.description}}</h4>
-        <p>Price: {{gem.price}}</p>
-        <p>Quantity: {{gem.quantity}}</p>
-        <button ng-show="gem.canPurchase">Add to Cart</button>
-    </div>
-</div>
+        <section ng-init="tab = 1"> 
+            <ul class="nav nav-pills">
+                <li ng-class="{active:tab === 1}"> <a ng-click="tab = 1">Description</a> </li>
+                <li ng-class="{active:tab === 2}"> <a ng-click="tab = 2">Specifications</a> </li>
+                <li ng-class="{active:tab === 3}"> <a ng-click="tab = 3">Reviews</a> </li>
+            </ul>
+        </section>
+
+        <div class="panel" ng-show="tab === 1">
+            <h4>Description</h4> 
+            <p>{{gem.description}}</p> 
+        </div>
+
+        <div class="panel" ng-show="tab === 2">
+            <h4>Specifications</h4> 
+            <blockquote>None yet</blockquote>
+        </div>
+
+        <div class="panel" ng-show="tab === 3">
+            <h4>Reviews</h4> 
+            <blockquote>None yet</blockquote> 
+        </div>
+    </li>
+</ul>
+
